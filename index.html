@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backtracking</title>
+  </head>
+  <body>
+    <h1>Backtracking</h1>
+    <p><mark> Copyright &#169; by David Matuzsek</mark></p>
+    <p><strong>Backtracking</strong> is a form of <em> recursion</em></p>
+    <p>
+      The usual scenurio is <ins>that</ins> you are <del>faced</del> with a
+      number of options, and you must choose one of these. After you make our
+      choice you will get a new set of options; just what set of options you get
+      depends on what choice you made. This procedure is repeated over and over
+      until you reach a final state. If you make a good sequence of choices,
+      your final state is goal state; if you didn't, it isn't.
+    </p>
+    <p>
+      Conceptually, you start at the root of a tree: the tree probably has some
+      good leaves and somme bad leaves, though it may be that the leaves are all
+      good or all bad, You want to get to a good leaf, At each node, beginning
+      with the root,you chose one of its children to move to, and you keep this
+      until you get up to a leaf.
+    </p>
+    <center>
+      <img
+        src="https://www.tutorialspoint.com/prolog/images/backtracking.jpg"
+        alt="Backtracking"
+      />
+    </center>
+
+    <ol>
+      <li>Return success if the current point is a viable solution.</li>
+      <li>
+        otherwise, if all paths have been exhausted (i.e., the current point is
+        an endpoint), return failure because there is no feasible solution.
+      </li>
+      <li>
+        If the current point is not an endpoint, backtrack and explore other
+        points, then repeat the preceding steps.
+      </li>
+    </ol>
+    <ul>
+      <li>
+        It is used to solve a variety of problems. You can use it, for example,
+        to find a feasible solution to a decision problem.
+      </li>
+      <li>
+        Backtracking algorithms were also discovered to be very effective for
+        solving optimization problems.
+      </li>
+      <li>
+        In some cases, it is used to find all feasible solutions to the
+        enumeration problem.
+        <ol>
+          <li>
+            Backtracking, on the other hand, is not regarded as an optimal
+            problem-solving technique.
+          </li>
+          <li>
+            It is useful when the solution to a problem does not have a time
+            limit.
+          </li>
+        </ol>
+      </li>
+    </ul>
+    <center>
+    <table border="1px">
+      <thead bgcolor="deffde">
+        <th bgcolor="ffffff"></th>
+        <th>2 By 3 Map</th>
+        <th>3 By 3 Map</th>
+        <th>3 by 4 Map</th>
+      </thead>
+
+      <tbody align="center">
+        <tr>
+          <td>Method 1</td>
+          <td>60 ms</td>
+          <td>940 ms</td>
+          <td>60530 ms(1 minute)</td>
+        </tr>
+        <tr>
+          <td>Method 0</td>
+          <td>0 ms</td>
+          <td>0 ms</td>
+          <td>0 ms</td>
+        </tr>
+      </tbody>
+
+      <tfoot align="center">
+        <tr>
+          <td>Total</td>
+          <td>1 ms</td>
+          <td>1 ms</td>
+          <td>1 ms</td>
+        </tr>
+      </tfoot>
+    </table>
+</center>
+<h2>Code</h2>
+<font color="red">
+<pre>
+    class Solution {
+        public:
+            int partitionString(string s) {
+                unordered_map<char,int>mp;
+                int ans=0;
+                int q=s.size();
+                for(int i=0;q>i;i++){
+                    if(mp.find(s[i])==mp.end()){
+                        mp[s[i]]++;
+                    }
+                    else{
+                        ans++;
+                        mp.clear();
+                        mp[s[i]]++;
+                    }
+                }
+                return ans+1;
+            }
+        };
+</pre>
+</font>
+
+<!-- <table align="center" border="1" cellpading="6">
+    <tbody>
+        <tr>
+        <td><img src="https://www.shutterstock.com/image-vector/black-clear-ball-260nw-738962776.jpg" alt=""></td>
+        <td><img src="https://www.shutterstock.com/image-vector/black-clear-ball-260nw-738962776.jpg" alt=""></td>
+        <td></td>
+        <td><img src="https://img.freepik.com/premium-vector/white-empty-round-smooth-sphere-with-shadow_1053-1152.jpg" alt=""></td>
+        <td><img src="https://img.freepik.com/premium-vector/white-empty-round-smooth-sphere-with-shadow_1053-1152.jpg" alt=""></td>
+    </tr>
+</tbody>
+
+</table> -->
+  </body>
+</html>
